@@ -45,13 +45,11 @@
 <h2 id="author"></h2>
 
 <script>
-    const proxy = 'https://cors.bridged.cc/';
-    fetch(proxy + 'https://zenquotes.io/api/quotes?l=1')
+    fetch('https://motivational-spark-api.vercel.app/api/quotes/random')
         .then(function (response) { return response.json(); })
-        .then(function (quotes) {
-            const quote = quotes[0];
-            document.getElementById("content").innerText = quote.q;
-            document.getElementById("author").innerText = "~" + quote.a;
+        .then(function (quote) {
+            document.getElementById("content").innerText = quote.quote;
+            document.getElementById("author").innerText = "~" + quote.author;
         });
 </script>
 </body>
