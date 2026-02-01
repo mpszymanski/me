@@ -45,7 +45,8 @@
 <h2 id="author"></h2>
 
 <script>
-    fetch("https://zenquotes.io/api/quotes?l=1")
+    const proxy = 'https://cors.bridged.cc/';
+    fetch(proxy + 'https://zenquotes.io/api/quotes?l=1')
         .then(function (response) { return response.json(); })
         .then(function (quotes) {
             const quote = quotes[0];
