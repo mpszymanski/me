@@ -45,11 +45,12 @@
 <h2 id="author"></h2>
 
 <script>
-    fetch("http://api.quotable.io/random", { rejectUnauthorized: false })
+    fetch("https://zenquotes.io/api/quotes?l=1")
         .then(function (response) { return response.json(); })
-        .then(function (data) {
-            document.getElementById("content").innerText = data.content;
-            document.getElementById("author").innerText = "~" + data.author;
+        .then(function (quotes) {
+            const quote = quotes[0];
+            document.getElementById("content").innerText = quote.q;
+            document.getElementById("author").innerText = "~" + quote.a;
         });
 </script>
 </body>
