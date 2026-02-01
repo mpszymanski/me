@@ -4,20 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Michał Szymański</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            text-align: center;
+            margin: 40px;
+            display: grid;
+            place-content: center;
+
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #content {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            padding-bottom: 1.25rem;
+            margin: 0;
+        }
+
+        #author {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            color: #9ca3af;
+            font-style: italic;
+            font-weight: 300;
+            margin: 0;
+        }
+    </style>
 </head>
-<body class="bg-black text-white min-h-screen d-flex justify-items-center content-center text-center m-10">
-    <h1 class="text-3xl pb-5" id="content"></h1>
-    <h2 class="text-2xl text-gray-400 italic" id="author"></h2>
-</body>
+<body>
+<h1 id="content"></h1>
+<h2 id="author"></h2>
+
 <script>
     fetch("https://api.quotable.io/random")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            document.getElementById('content').innerText = data.content;
-            document.getElementById('author').innerText = "~" + data.author;
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+            document.getElementById("content").innerText = data.content;
+            document.getElementById("author").innerText = "~" + data.author;
         });
 </script>
+</body>
 </html>
