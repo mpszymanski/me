@@ -41,15 +41,24 @@
     </style>
 </head>
 <body>
-<h1 id="content"></h1>
-<h2 id="author"></h2>
+<figure>
+    <blockquote id="content"></blockquote>
+    <figcaption id="author"></figcaption>
+</figure>
+<noscript>JavaScript is required to display this page.</noscript>
 
 <script>
     fetch('https://motivational-spark-api.vercel.app/api/quotes/random')
-        .then(function (response) { return response.json(); })
-        .then(function (quote) {
+        .then(function (response) {
+            if (!response.ok) { throw new Error('Request failed: ' + response.status); }
+            return response.json();
+        })
+    .then(function (quote) {
             document.getElementById("content").innerText = quote.quote;
             document.getElementById("author").innerText = "~" + quote.author;
+        })
+        .catch(function () {
+            document.getElementById("content").innerText = "Could not load quote.";
         });
 </script>
 </body>
